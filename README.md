@@ -45,6 +45,11 @@ Once the time for the assessment is up (and not before), push your code to your 
 
 Field Trip is an app that tracks Airlines, Flights, and Passengers.
 
+
+* Airlines have many Flights
+* Flights belong to an Airline
+* Passengers have many Flights
+* Flights have many Passengers
 * Airlines have a name
   * Ex: name: “Frontier”
 * Flights have a number, date, departure city, and arrival city
