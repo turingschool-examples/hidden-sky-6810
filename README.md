@@ -1,8 +1,6 @@
-# B2 Assessments
+# Field Trip
 
-Base repository for B2 assessments and diagnostics.
-
-This repository requires and has been tested on Ruby v2.5.3 and is based on Rails 5.2.5
+This repository requires and has been tested on Ruby v2.5.3 and is based on Rails 5.2.6
 
 RSpec and Shoulda-Matchers have been installed and set up.
 
