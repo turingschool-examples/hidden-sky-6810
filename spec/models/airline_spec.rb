@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Airline, type: :model do
@@ -10,10 +12,9 @@ RSpec.describe Airline, type: :model do
     it 'finds adults' do
       airline = Airline.create!(name: 'Test Airlines')
 
-      flight1 = airline.flights.create(number: 1234, date: '08/03/22', departure_city: 'Phoenix', arrival_city: 'Tucson')
+      flight1 = airline.flights.create(number: 1234, date: '08/03/22', departure_city: 'Phoenix',
+                                       arrival_city: 'Tucson')
       flight2 = airline.flights.create(number: 4321, date: '08/04/22', departure_city: 'Denver', arrival_city: 'LA')
-      flight3 = airline.flights.create(number: 4321, date: '08/05/22', departure_city: 'San Francisco', arrival_city: 'New York')
-      flight4 = airline.flights.create(number: 4321, date: '08/07/22', departure_city: 'Chicago', arrival_city: 'Cheyenne')
 
       passenger1 = Passenger.create!(name: 'Chloe', age: 30)
       passenger2 = Passenger.create!(name: 'Liam', age: 17)

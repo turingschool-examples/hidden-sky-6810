@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFlightPassengers < ActiveRecord::Migration[5.2]
   def change
     create_table :flight_passengers do |t|

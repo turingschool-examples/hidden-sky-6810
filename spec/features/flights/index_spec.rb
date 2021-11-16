@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'flight index' do
@@ -13,7 +15,8 @@ RSpec.describe 'flight index' do
     before(:each) do
       airline = Airline.create!(name: 'Test Airlines')
 
-      @flight1 = airline.flights.create(number: 1234, date: '08/03/22', departure_city: 'Phoenix', arrival_city: 'Tucson')
+      @flight1 = airline.flights.create(number: 1234, date: '08/03/22', departure_city: 'Phoenix',
+                                        arrival_city: 'Tucson')
       @flight2 = airline.flights.create(number: 4321, date: '08/04/22', departure_city: 'Denver', arrival_city: 'LA')
 
       @passenger1 = Passenger.create!(name: 'Chloe', age: 30)
@@ -55,7 +58,7 @@ RSpec.describe 'flight index' do
       click_button 'Remove Bri'
 
       expect(page).to_not have_content(passenger_del.name)
-      expect(passenger_del.name).to eq('Bri') #existence check
+      expect(passenger_del.name).to eq('Bri') # existence check
     end
   end
 end
