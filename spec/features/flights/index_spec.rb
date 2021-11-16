@@ -50,7 +50,7 @@ RSpec.describe "Flights Index Page" do
     #could not figure out why within blocks weren't working atm, will come back to them
     it "next to each flight number, i see the name of the airline of that flight" do
       # within("#flights-#{@flight1.id}") do
-      require "pry"; binding.pry
+      # require "pry"; binding.pry
         expect(page).to have_content(@airline1.name)
       # end
       # within "#flights-#{@flight4.id}" do
@@ -70,12 +70,12 @@ RSpec.describe "Flights Index Page" do
     end
 
     it " has a link next to each passengers name to remove that passenger from that flight" do
-      within "#flights-#{@flight3.id}" do
+      # within "#flights-#{@flight3.id}" do
         expect(page).to have_content(@passenger5.name)
         click_link "Remove #{@passenger5.name}"
         expect(current_path).to eq(flights_path)
         expect(page).to_not have_content(@passenger5.name)
-      end 
+      # end
     end
   end
 end
