@@ -36,10 +36,21 @@ RSpec.describe 'airline show page' do
       expect(page).to have_content(@airline.name)
     end
 
-    xit 'shows all adult passengers' do
+    it 'shows all adult passengers' do
+      visit airline_path(@airline)
+
+      expect(page).to have_content(@passenger1.name)
+      expect(page).to have_content(@passenger3.name)
+      expect(page).to have_content(@passenger4.name)
+
+      expect(page).to_not have_content(@passenger2.name)
+      expect(page).to_not have_content(@passenger5.name)
     end
 
-    xit 'it does not show duplicate passengers' do
+    it 'it does not show duplicate passengers' do
+      visit airline_path(@airline)
+
+      expect(page).to have_content(@passenger1.name, count: 1)
     end
   end
 end

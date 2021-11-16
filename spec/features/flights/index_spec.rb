@@ -53,6 +53,7 @@ RSpec.describe 'flight index' do
       click_button 'Remove Mary'
 
       expect(page).to_not have_content(@passenger3.name)
+      expect(@passenger3.name).to eq('Mary') #existence check
     end
   end
 end
