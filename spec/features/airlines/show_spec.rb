@@ -1,12 +1,3 @@
-# User Story 3, Airline's Passengers
-#
-# As a visitor
-# When I visit an airline's show page
-# Then I see a list of passengers that have flights on that airline
-# And I see that this list is unique (no duplicate passengers)
-# And I see that this list only includes adult passengers
-#
-# (Note: an adult is anyone with age greater than or equal to 18)
 require 'rails_helper'
 
 RSpec.describe 'airline show page' do
@@ -50,7 +41,7 @@ RSpec.describe 'airline show page' do
     it 'it does not show duplicate passengers' do
       visit airline_path(@airline)
 
-      expect(page).to have_content(@passenger1.name, count: 1)
+      expect(page).to have_content(@passenger3.name, count: 1)
     end
   end
 end
