@@ -3,6 +3,7 @@ class Airline < ApplicationRecord
 
   def adult_passengers
     test = Passenger.joins(:flights).where(["age >= ?", 18]).distinct.pluck(:name)
+
   end
 end
 

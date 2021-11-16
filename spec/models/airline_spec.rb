@@ -15,7 +15,7 @@ RSpec.describe Airline, type: :model do
       passenger2 = flight1.passengers.create!(name: "Colt", age: 17)
       passenger3 = flight2.passengers.create!(name: "Larry", age: 53)
 
-      expect(Airline.adult_passengers).to eq(["Derek", "Larry"])
+      expect(airline1.adult_passengers).to eq(["Derek", "Larry"])
     end
   end
 end
