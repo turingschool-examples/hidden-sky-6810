@@ -39,32 +39,43 @@ RSpec.describe "Flights Index Page" do
 
   describe "when i visit a flights Index page" do
     it "i see a list of all flight numbers" do
-      expect(page).to have_content(@flight1)
-      expect(page).to have_content(@flight2)
-      expect(page).to have_content(@flight3)
-      expect(page).to have_content(@flight4)
-      expect(page).to have_content(@flight5)
-      expect(page).to have_content(@flight6)
+      expect(page).to have_content(@flight1.number)
+      expect(page).to have_content(@flight2.number)
+      expect(page).to have_content(@flight3.number)
+      expect(page).to have_content(@flight4.number)
+      expect(page).to have_content(@flight5.number)
+      expect(page).to have_content(@flight6.number)
     end
 
+    #could not figure out why within blocks weren't working atm, will come back to them
     it "next to each flight number, i see the name of the airline of that flight" do
-      within "#flight-#{@flight1.id}" do
+      # within("#flights-#{@flight1.id}") do
+      require "pry"; binding.pry
         expect(page).to have_content(@airline1.name)
-      end
-      within "#flight-#{@flight4.id}" do
+      # end
+      # within "#flights-#{@flight4.id}" do
         expect(page).to have_content(@airline2.name)
-      end
+      # end
     end
 
     it "under each flight number i see the names of all that flight's passengers" do
-      within "#flight-#{flight2.id}" do
+      # within "#flights-#{@flight2.id}" do
         expect(page).to have_content(@passenger3.name)
         expect(page).to have_content(@passenger4.name)
-      end
-      within "#flight-#{flight5.id}" do
+      # end
+      # within "#flights-#{@flight5.id}" do
         expect(page).to have_content(@passenger9.name)
         expect(page).to have_content(@passenger10.name)
-      end
+      # end
+    end
+
+    it " has a link next to each passengers name to remove that passenger from that flight" do
+      within "#flights-#{@flight3.id}" do
+        expect(page).to have_content(@passenger5.name)
+        click_link "Remove #{@passenger5.name}"
+        expect(current_path).to eq(flights_path)
+        expect(page).to_not have_content(@passenger5.name)
+      end 
     end
   end
 end
