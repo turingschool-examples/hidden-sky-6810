@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe "Airline Show Page" do
+RSpec.describe "Airline Show Page" do
   before do
     @airline1 = Airline.create!(name: "Backtier")
     @airline2 = Airline.create!(name: "Delto")
@@ -22,7 +22,7 @@ Rspec.describe "Airline Show Page" do
     end
 
   describe "when I visit an Airline Show Page" do
-    it "i see a list of adult passengers(unique) that have flights on that airline"
+    it "i see a list of adult passengers(unique) that have flights on that airline" do
       expect(page).to have_content(@airline1.name)
       expect(page).to_not have_content(@airline2.name)
       expect(page).to have_content(@passenger1.name, count: 1)
@@ -30,4 +30,5 @@ Rspec.describe "Airline Show Page" do
       expect(page).to have_content(@passenger2.name)
       expect(page).to_not have_content(@passenger4)
     end
-  end 
+  end
+end 
