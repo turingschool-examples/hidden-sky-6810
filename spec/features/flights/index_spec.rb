@@ -48,12 +48,14 @@ RSpec.describe 'flight index' do
     end
 
     it 'has delete buttons' do
+      passenger_del = Passenger.create!(name: 'Bri', age: 25)
+      FlightPassenger.create!(flight_id: @flight2.id, passenger_id: passenger_del.id)
       visit flights_path
 
-      click_button 'Remove Mary'
+      click_button 'Remove Bri'
 
-      expect(page).to_not have_content(@passenger3.name)
-      expect(@passenger3.name).to eq('Mary') #existence check
+      expect(page).to_not have_content(passenger_del.name)
+      expect(passenger_del.name).to eq('Bri') #existence check
     end
   end
 end
