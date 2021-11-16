@@ -12,7 +12,7 @@ RSpec.describe "Flight Index Page" do
 
   it "shows flights and their attributes" do
     visit "/flights"
-    save_and_open_page
+
     expect(page).to have_content(@flight1.number)
     expect(page).to have_content(@flight2.number)
 
@@ -27,4 +27,25 @@ RSpec.describe "Flight Index Page" do
       expect(page).to have_content(@airline1.name)
     end
   end
+
+  it "can remove a passenger from a flight" do
+    visit "/flights"
+    
+    click_button "Remove #{@passenger2.name}"
+    expect(current_path).to eq("/flights")
+
+    expect(page).to_not have_content(@passenger2.name)
+  end
 end
+
+# User Story 2, Remove a Passenger from a Flight
+#
+# As a visitor
+# When I visit the flights index page
+# Next to each passengers name
+# I see a link or button to remove that passenger from that flight
+# When I click on that link/button
+# I'm returned to the flights index page
+# And I no longer see that passenger listed under that flight
+#
+# (Note: you should not destroy the passenger record entirely)
