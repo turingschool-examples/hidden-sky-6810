@@ -31,9 +31,10 @@ RSpec.describe "Flight Index Page" do
   it "can remove a passenger from a flight" do
     visit "/flights"
 
-    click_button "Remove #{@passenger2.name}"
-    expect(current_path).to eq("/flights")
-
-    expect(page).to_not have_content(@passenger2.name)
+    within "#id-#{@flight1.id}" do
+      click_button "Remove #{@passenger2.name}"
+      expect(current_path).to eq("/flights")
+      expect(page).to_not have_content(@passenger2.name)
+    end
   end
 end
